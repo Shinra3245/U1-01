@@ -1,0 +1,64 @@
+body {
+font-family: Arial, sans-serif;
+text-align: center;
+margin: 20px;
+background-color: #f4f4f4;
+}
+h1 {
+color: #333;
+}
+#team-name {
+color: #007BFF;
+margin-bottom: 20px;
+}
+#member-section img {
+width: 150px;
+border-radius: 50%;
+margin: 10px 0;
+}
+button {
+margin: 10px;
+padding: 10px 15px;
+background-color: #007BFF;
+border: none;
+border-radius: 5px;
+color: white;
+cursor: pointer;
+}
+button:hover {
+background-color: #0056b3;
+}
+
+
+@media (max-width: 600px) {
+  body {
+    margin: 10px;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  #member-section img {
+    width: 120px; 
+  }
+}
+
+/* --- Pantallas de 400px o menos --- */
+@media (max-width: 400px) {
+  h1 {
+    font-size: 1.8em;
+  }
+
+  #member-section img {
+    width: 100px;
+  }
+
+  button {
+    /* Cambios para centrar el botón */
+    display: block; /* Lo convierte en un elemento de bloque */
+    width: 90%; 
+    margin: 10px auto; /* Mantiene margen vertical y centra horizontalmente */
+    padding: 12px;
+  }
+}
