@@ -1,3 +1,6 @@
+:root {
+  --color-fondo: #000; /* valor por defecto */
+}
 body {
 font-family: Arial, sans-serif;
 text-align: center;
