@@ -12,7 +12,7 @@ let colorIndex = 0;
 // Datos de los integrantes
 const members = [
     { photo: "images/Omar.jpeg", desc: "Estudiante de ING. en Sistemas Computacionales apacionado por el desarrollo web" },
-    { photo: "alumno2.jpg", desc: "Alumno 2 - Descripción breve." }
+    { photo: "images/serch.png", desc: "Estudiante de Ing. en Sistemas Computacionales apacionado por el Front-End y el Desarrollo Movil" }
 ];
 
 let memberIndex = 0;
