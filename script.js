@@ -1,20 +1,33 @@
-// Colores para el fondo
-const colors = ["#f4f4f4", "#ffcccc", "#ccffcc", "#ccccff", "#ffffcc"];
+// Colores para el fondo 
+const gradients = [
+    "linear-gradient(45deg, #f4f4f4, #ffcccc)", // Gris claro a rosa claro
+    "linear-gradient(45deg, #ffcccc, #ccffcc)", // Rosa claro a verde claro
+    "linear-gradient(45deg, #ccffcc, #ccccff)", // Verde claro a azul claro
+    "linear-gradient(45deg, #ccccff, #ffffcc)", // Azul claro a amarillo claro
+    "linear-gradient(45deg, #ffffcc, #f4f4f4)"  // Amarillo claro a gris claro
+];
+
 let colorIndex = 0;
+
 // Datos de los integrantes
 const members = [
-{ photo: "alumno1.jpg", desc: "Alumno 1 - Descripción breve." },
-{ photo: "alumno2.jpg", desc: "Alumno 2 - Descripción breve." }
+    { photo: "images/Omar.jpeg", desc: "Estudiante de ING. en Sistemas Computacionales apacionado por el desarrollo web" },
+    { photo: "alumno2.jpg", desc: "Alumno 2 - Descripción breve." }
 ];
+
 let memberIndex = 0;
+
 // Botón cambio de color
 document.getElementById("colorButton").addEventListener("click", () => {
-document.body.style.backgroundColor = colors[colorIndex];
-colorIndex = (colorIndex + 1) % colors.length;
+    // Aplica el gradiente actual
+    document.body.style.backgroundImage = gradients[colorIndex];
+    // Incrementa el índice para el siguiente color
+    colorIndex = (colorIndex + 1) % gradients.length;
 });
+
 // Botón cambio de integrante
 document.getElementById("switchButton").addEventListener("click", () => {
-memberIndex = (memberIndex + 1) % members.length;
-document.getElementById("member-photo").src = members[memberIndex].photo;
-document.getElementById("member-desc").textContent = members[memberIndex].desc;
+    memberIndex = (memberIndex + 1) % members.length;
+    document.getElementById("member-photo").src = members[memberIndex].photo;
+    document.getElementById("member-desc").textContent = members[memberIndex].desc;
 });
