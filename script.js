@@ -3,7 +3,7 @@ const colors = ["#f4f4f4", "#ffcccc", "#ccffcc", "#ccccff", "#ffffcc"];
 let colorIndex = 0;
 // Datos de los integrantes
 const members = [
-{ photo: "images/Omar.jpeg", desc: "Estudiante de ING. en Sistemas Computacionales apacionado por el desarrollo web" },
+{ photo: "images/Omar.jpeg", desc: "Estudiante de ING. en Sistemas Computacionales apasionado por el desarrollo web" },
 { photo: "images/emilio.jpg", desc: "Mi nombre es Emilio y soy estudiante de Ing. en Sistemas del TECNM, me encanta trabajar con herramientas novedosas :D" }
 ];
 let memberIndex = 0;
