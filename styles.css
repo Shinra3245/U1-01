@@ -65,3 +65,21 @@ background-color: #0056b3;
     padding: 12px;
   }
 }
+
+/* Estilo alternativo: Minimalista */
+#reloj-display {
+  /* Quitar toda la apariencia de "input" */
+  border: none;
+  background-color: transparent;
+  
+  /* Estilo del texto */
+  font-family: Arial, sans-serif;
+  font-size: 1.2em; /* Un poco más grande que el texto normal */
+  color: #555; /* Un color gris oscuro */
+  text-align: center;
+  
+  /* Ajustes finales */
+  width: 100px;
+  outline: none; /* Quitar borde al hacer clic */
+  cursor: default; /* Hacer que el cursor no parezca de texto */
+}
