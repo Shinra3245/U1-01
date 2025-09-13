@@ -15,8 +15,13 @@ colorIndex = (colorIndex + 1) % colors.length;
 // Botón cambio de integrante
 document.getElementById("switchButton").addEventListener("click", () => {
 memberIndex = (memberIndex + 1) % members.length;
+//console.log(memberIndex);
 document.getElementById("member-photo").src = members[memberIndex].photo;
 document.getElementById("member-desc").textContent = members[memberIndex].desc;
-document.getElementById("bolala").textContent = "hola papito soy la bola, como tass 👻";
+if(memberIndex == 1){
+    document.getElementById("bolala").textContent = "hola papito soy la bola, como tass 👻";
+}else{
+    document.getElementById("bolala").textContent = "soy el buñuelo xd";
+}
 
 });
