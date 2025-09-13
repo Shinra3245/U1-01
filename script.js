@@ -14,14 +14,23 @@ colorIndex = (colorIndex + 1) % colors.length;
 });
 // Botón cambio de integrante
 document.getElementById("switchButton").addEventListener("click", () => {
+if(memberIndex == 0){
+    document.getElementById("switchButton").textContent = "Sigue Omar";
+}else{
+    document.getElementById("switchButton").textContent = "Sigue Emilio";
+}
 memberIndex = (memberIndex + 1) % members.length;
 //console.log(memberIndex);
 document.getElementById("member-photo").src = members[memberIndex].photo;
 document.getElementById("member-desc").textContent = members[memberIndex].desc;
-if(memberIndex == 1){
-    document.getElementById("bolala").textContent = "hola papito soy la bola, como tass 👻";
-}else{
-    document.getElementById("bolala").textContent = "soy el buñuelo xd";
-}
+
 
 });
+function avanzarHora(){
+    var hactual = new Date();
+    var horaActual = hactual.getHours() + ":"
+                    + hactual.getMinutes()  + ":"
+                    + hactual.getSeconds();
+    document.form_reloj.reloj.value = horaActual;
+    setTimeout("avanzarHora()", 1000);
+} 
