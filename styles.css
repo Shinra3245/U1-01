@@ -1,8 +1,7 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 :root {
- 
+
   --bg-color: #121212;
   --card-color: #1e1e1e;
   --primary-text: #e0e0e0;
@@ -10,9 +9,11 @@
   --accent-hover: #01a99c;
   --shadow-color: rgba(0, 0, 0, 0.4);
 
- 
+
   --border-radius: 12px;
   --transition-speed: 0.3s ease;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
 }
 
 
@@ -26,8 +27,8 @@ body {
   font-family: 'Poppins', sans-serif;
   background-color: var(--bg-color);
   color: var(--primary-text);
-  
- 
+
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,7 +38,6 @@ body {
 
 
 .main-container {
-  background-color: var(--card-color);
   padding: 40px;
   border-radius: var(--border-radius);
   box-shadow: 0 10px 30px var(--shadow-color);
@@ -45,6 +45,15 @@ body {
   width: 100%;
   max-width: 500px;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at var(--mouse-x) var(--mouse-y),
+      rgba(255, 255, 255, 0.08),
+      transparent 20%
+    ),
+    var(--card-bg, #1E1E1E);
+  transition: all 0.3s ease;
 }
 
 
@@ -105,7 +114,7 @@ button:hover {
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
   padding: 8px 16px;
-  
+
   font-family: 'Courier New', Courier, monospace;
   font-size: 1.5em;
   color: var(--primary-text);
@@ -122,7 +131,7 @@ button:hover {
   .main-container {
     padding: 30px;
   }
-  
+
   h1 {
     font-size: 2em;
   }
@@ -137,11 +146,11 @@ button:hover {
   body {
     padding: 10px;
   }
-  
+
   .main-container {
     padding: 20px;
   }
-  
+
   h1 {
     font-size: 1.8em;
   }
@@ -160,37 +169,38 @@ button:hover {
 
 
 .main-container {
-   
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .main-container:hover {
-    transform: scale(1.01);
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.4);
+  transform: scale(1.01);
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 
 button {
-   
-    transition: background-color 0.3s ease, transform 0.2s ease;
+
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-    cursor: pointer;
-    filter: brightness(1.15);
-    transform: translateY(-2px);
+  cursor: pointer;
+  filter: brightness(1.15);
+  transform: translateY(-2px);
 }
 
 button:active {
-    transform: translateY(0px);
+  transform: translateY(0px);
 }
 
 #member-photo {
-    /* ...tus estilos actuales... */
-    transition: opacity 0.4s ease-in-out; /* La propiedad a animar es la opacidad */
+  /* ...tus estilos actuales... */
+  transition: opacity 0.4s ease-in-out;
+  /* La propiedad a animar es la opacidad */
 }
 
 /* Clase que usaremos para hacer la imagen "invisible" temporalmente */
 .fade-out {
-    opacity: 0;
+  opacity: 0;
 }

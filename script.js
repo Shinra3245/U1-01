@@ -84,3 +84,31 @@ colorButton.addEventListener("click", () => {
     document.body.style.backgroundColor = colors[colorIndex];
     colorIndex = (colorIndex + 1) % colors.length;
 });
+
+// --- FUNCIONALIDAD EXTRA: EFECTO DE FOCO ---
+
+// Selecciona el contenedor principal
+const mainContainer = document.querySelector('.main-container');
+
+// Añade un 'escuchador' para el evento 'mousemove'
+mainContainer.addEventListener('mousemove', (e) => {
+    // 1. Obtiene las dimensiones y posición de la tarjeta en la pantalla
+    const rect = mainContainer.getBoundingClientRect();
+
+    // 2. Calcula la posición X del mouse DENTRO de la tarjeta
+    //    (Posición del mouse en la ventana - Posición inicial de la tarjeta)
+    const x = e.clientX - rect.left;
+
+    // 3. Calcula la posición Y del mouse DENTRO de la tarjeta
+    const y = e.clientY - rect.top;
+
+    // 4. Actualiza las variables CSS con las nuevas coordenadas
+    mainContainer.style.setProperty('--mouse-x', `${x}px`);
+    mainContainer.style.setProperty('--mouse-y', `${y}px`);
+});
+
+// Opcional: Resetea la posición cuando el mouse sale de la tarjeta
+mainContainer.addEventListener('mouseleave', () => {
+    mainContainer.style.setProperty('--mouse-x', '50%');
+    mainContainer.style.setProperty('--mouse-y', '50%');
+});
