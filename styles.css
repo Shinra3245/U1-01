@@ -1,85 +1,159 @@
+/* --- IMPORTACIÓN DE FUENTE Y VARIABLES GLOBALES --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
 :root {
-  --color-fondo: #000; /* valor por defecto */
+  /* Paleta de colores (fácil de personalizar) */
+  --bg-color: #121212; /* Fondo oscuro principal */
+  --card-color: #1e1e1e; /* Color para tarjetas o contenedores */
+  --primary-text: #e0e0e0; /* Texto principal claro */
+  --accent-color: #03dac6; /* Color de acento vibrante (turquesa) */
+  --accent-hover: #01a99c; /* Color de acento al pasar el mouse */
+  --shadow-color: rgba(0, 0, 0, 0.4);
+
+  /* Otros valores de diseño */
+  --border-radius: 12px;
+  --transition-speed: 0.3s ease;
 }
+
+/* --- ESTILOS GENERALES Y RESETEO BÁSICO --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-font-family: Arial, sans-serif;
-text-align: center;
-margin: 20px;
-background-color: #f4f4f4;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--primary-text);
+  
+  /* Centrado de contenido con Flexbox */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
 }
+
+/* --- CONTENEDOR PRINCIPAL TIPO TARJETA --- */
+.main-container {
+  background-color: var(--card-color);
+  padding: 40px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 30px var(--shadow-color);
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- ESTILOS DE TEXTO --- */
 h1 {
-color: #333;
+  color: var(--accent-color);
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
 }
+
 #team-name {
-color: #007BFF;
-margin-bottom: 20px;
+  font-weight: 300;
+  font-size: 1.2em;
+  margin-bottom: 30px;
+  opacity: 0.8;
 }
+
+/* --- SECCIÓN DE MIEMBROS --- */
 #member-section img {
-width: 150px;
-border-radius: 50%;
-margin: 10px 0;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid var(--accent-color);
+  margin-bottom: 20px;
+  object-fit: cover; /* Asegura que la imagen no se deforme */
+  box-shadow: 0 4px 15px var(--shadow-color);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
 }
+
+#member-section img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 25px var(--shadow-color);
+}
+
+/* --- BOTONES --- */
 button {
-margin: 10px;
-padding: 10px 15px;
-background-color: #007BFF;
-border: none;
-border-radius: 5px;
-color: white;
-cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1em;
+  font-weight: 600;
+  padding: 12px 24px;
+  margin: 10px;
+  border: none;
+  border-radius: var(--border-radius);
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+  cursor: pointer;
+  transition: background-color var(--transition-speed), transform var(--transition-speed);
 }
+
 button:hover {
-background-color: #0056b3;
+  background-color: var(--accent-hover);
+  transform: translateY(-3px); /* Efecto de "levantarse" */
+}
+
+/* --- ESTILO DEL RELOJ --- */
+#reloj-display {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 8px 16px;
+  
+  font-family: 'Courier New', Courier, monospace; /* Fuente monoespaciada para look digital */
+  font-size: 1.5em;
+  color: var(--primary-text);
+  text-align: center;
+  width: 150px;
+  outline: none;
+  cursor: default;
+  margin: 20px auto 0;
 }
 
 
+/* --- DISEÑO RESPONSIVO (ADAPTATIVO) --- */
 @media (max-width: 600px) {
-  body {
-    margin: 10px;
+  .main-container {
+    padding: 30px;
   }
-
+  
   h1 {
     font-size: 2em;
   }
 
   #member-section img {
-    width: 120px; 
+    width: 120px;
+    height: 120px;
   }
 }
 
-/* --- Pantallas de 400px o menos --- */
 @media (max-width: 400px) {
+  body {
+    padding: 10px;
+  }
+  
+  .main-container {
+    padding: 20px;
+  }
+  
   h1 {
     font-size: 1.8em;
   }
 
   #member-section img {
     width: 100px;
+    height: 100px;
   }
 
   button {
-    /* Cambios para centrar el botón */
-    display: block; /* Lo convierte en un elemento de bloque */
-    width: 90%; 
-    margin: 10px auto; /* Mantiene margen vertical y centra horizontalmente */
-    padding: 12px;
+    display: block;
+    width: 100%;
+    margin: 10px 0;
   }
-}
-
-/* Estilo alternativo: Minimalista */
-#reloj-display {
-  /* Quitar toda la apariencia de "input" */
-  border: none;
-  background-color: transparent;
-  
-  /* Estilo del texto */
-  font-family: Arial, sans-serif;
-  font-size: 1.2em; /* Un poco más grande que el texto normal */
-  color: #555; /* Un color gris oscuro */
-  text-align: center;
-  
-  /* Ajustes finales */
-  width: 100px;
-  outline: none; /* Quitar borde al hacer clic */
-  cursor: default; /* Hacer que el cursor no parezca de texto */
 }
