@@ -5,7 +5,6 @@ const members = [
 ];
 let memberIndex = 0;
 
-// CAMBIO 1: Añade una variable para guardar el ID del temporizador.
 let typingTimeoutId = null;
 
 // --- ELEMENTOS DEL DOM ---
@@ -21,37 +20,31 @@ const relojInput = document.form_reloj.reloj;
 function showMember(index) {
     const member = members[index];
     const nextIndex = (index + 1) % members.length;
-    
-    // Inicia la animación de desvanecimiento
+
     memberPhoto.classList.add('fade-out');
 
     setTimeout(() => {
-        // Esto se ejecuta a la mitad de la transición (200ms)
-        memberPhoto.src = member.photo; // Cambia la imagen mientras está invisible
+        memberPhoto.src = member.photo; 
         typeAnimation(member.desc);
         switchButton.textContent = `Mostrar a ${members[nextIndex].name}`;
-        
-        // Elimina la clase para que la nueva imagen aparezca suavemente
         memberPhoto.classList.remove('fade-out');
-    }, 200); // El tiempo debe ser la mitad de la duración de la transición en CSS
+    }, 200); 
 }
 
 /**
- * Anima el texto de la descripción como si se estuviera escribiendo.
- * @param {string} text - El texto a animar.
+ * 
+ * @param {string} text 
  */
 function typeAnimation(text) {
-    // CAMBIO 2: Cancela cualquier animación que esté en curso.
     clearTimeout(typingTimeoutId);
 
     let i = 0;
-    memberDesc.textContent = ''; // Limpia el párrafo
+    memberDesc.textContent = ''; 
     function escribir() {
         if (i < text.length) {
             memberDesc.textContent += text.charAt(i);
             i++;
-            // CAMBIO 3: Guarda el ID del nuevo temporizador en nuestra variable.
-            typingTimeoutId = setTimeout(escribir, 40); // Velocidad de escritura
+            typingTimeoutId = setTimeout(escribir, 40); 
         }
     }
     escribir();
@@ -66,8 +59,6 @@ function avanzarHora() {
     setTimeout(avanzarHora, 1000);
 }
 
-
-// --- EVENT LISTENERS ---
 window.addEventListener('DOMContentLoaded', () => {
     showMember(0);
     avanzarHora();
@@ -85,29 +76,17 @@ colorButton.addEventListener("click", () => {
     colorIndex = (colorIndex + 1) % colors.length;
 });
 
-// --- FUNCIONALIDAD EXTRA: EFECTO DE FOCO ---
 
-// Selecciona el contenedor principal
 const mainContainer = document.querySelector('.main-container');
 
-// Añade un 'escuchador' para el evento 'mousemove'
 mainContainer.addEventListener('mousemove', (e) => {
-    // 1. Obtiene las dimensiones y posición de la tarjeta en la pantalla
     const rect = mainContainer.getBoundingClientRect();
-
-    // 2. Calcula la posición X del mouse DENTRO de la tarjeta
-    //    (Posición del mouse en la ventana - Posición inicial de la tarjeta)
     const x = e.clientX - rect.left;
-
-    // 3. Calcula la posición Y del mouse DENTRO de la tarjeta
     const y = e.clientY - rect.top;
-
-    // 4. Actualiza las variables CSS con las nuevas coordenadas
     mainContainer.style.setProperty('--mouse-x', `${x}px`);
     mainContainer.style.setProperty('--mouse-y', `${y}px`);
 });
 
-// Opcional: Resetea la posición cuando el mouse sale de la tarjeta
 mainContainer.addEventListener('mouseleave', () => {
     mainContainer.style.setProperty('--mouse-x', '50%');
     mainContainer.style.setProperty('--mouse-y', '50%');
