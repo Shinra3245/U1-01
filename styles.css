@@ -2,12 +2,12 @@
 
 :root {
 
-  --bg-color: #121212;
-  --card-color: #1e1e1e;
-  --primary-text: #e0e0e0;
-  --accent-color: #03dac6;
+  --bg-color: #ffffff;
+  --card-color: #000000;
+  --primary-text: #000000;
+  --accent-color: #000000;
   --accent-hover: #01a99c;
-  --shadow-color: rgba(0, 0, 0, 0.4);
+  --shadow-color: rgba(245, 2, 2, 0.4);
 
 
   --border-radius: 12px;
@@ -54,6 +54,38 @@ body {
     ),
     var(--card-bg, #1E1E1E);
   transition: all 0.3s ease;
+  z-index: 1; 
+}
+
+/* --- INICIA CÓDIGO DEL BORDE ELÉCTRICO --- */
+
+.main-container::before {
+    content: '';
+    position: absolute;
+    z-index: -1; /* Lo posiciona detrás de la tarjeta */
+
+    /* Lo hace un poco más grande que la tarjeta para crear el borde */
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    
+    /* Hereda el redondeo de tu tarjeta para que encaje perfecto */
+    border-radius: inherit; 
+    
+    /* El gradiente cónico que crea el efecto de colores fluidos */
+    background: conic-gradient(
+        from var(--angle),
+        #00f2fe, /* Cian */
+        #4facfe, /* Azul claro */
+        #c62af5, /* Magenta */
+        #00f2fe  /* Cian de nuevo para un ciclo suave */
+    );
+
+    /* El desenfoque que le da el brillo de neón */
+    filter: blur(8px);
+  
+    animation: electric-border 5s linear infinite;
 }
 
 
@@ -204,3 +236,14 @@ button:active {
 .fade-out {
   opacity: 0;
 }
+
+/* Animación que hace girar el gradiente */
+@keyframes electric-border {
+    from {
+        --angle: 0deg;
+    }
+    to {
+        --angle: 360deg;
+    }
+}
+/* --- FINALIZA CÓDIGO DEL BORDE ELÉCTRICO --- */
