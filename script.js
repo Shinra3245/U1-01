@@ -1,6 +1,6 @@
 // --- DATOS Y VARIABLES GLOBALES ---
 const members = [
-    { name: "Omar", photo: "images/Omar.png", desc: "Estudiante de ING. en Sistemas Computacionales apasionado por el desarrollo web." },
+    { name: "Omar", photo: "images/Omar.png", desc: "Mi nombre es Omar y soy Estudiante de ING. en Sistemas Computacionales apasionado por el desarrollo web." },
     { name: "Emilio", photo: "images/emilio.jpg", desc: "Mi nombre es Emilio y soy estudiante de Ing. en Sistemas del TECNM, me encanta trabajar con novedosas herramientas :D" }
 ];
 let memberIndex = 0;
@@ -20,10 +20,20 @@ const relojInput = document.form_reloj.reloj;
 
 function showMember(index) {
     const member = members[index];
-    memberPhoto.src = member.photo;
-    typeAnimation(member.desc);
     const nextIndex = (index + 1) % members.length;
-    switchButton.textContent = `Mostrar a ${members[nextIndex].name}`;
+    
+    // Inicia la animación de desvanecimiento
+    memberPhoto.classList.add('fade-out');
+
+    setTimeout(() => {
+        // Esto se ejecuta a la mitad de la transición (200ms)
+        memberPhoto.src = member.photo; // Cambia la imagen mientras está invisible
+        typeAnimation(member.desc);
+        switchButton.textContent = `Mostrar a ${members[nextIndex].name}`;
+        
+        // Elimina la clase para que la nueva imagen aparezca suavemente
+        memberPhoto.classList.remove('fade-out');
+    }, 200); // El tiempo debe ser la mitad de la duración de la transición en CSS
 }
 
 /**
