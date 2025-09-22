@@ -4,7 +4,6 @@ const members = [
     { name: "Emilio", photo: "images/emilio.jpg", desc: "Mi nombre es Emilio y soy estudiante de Ing. en Sistemas del TECNM, me encanta trabajar con novedosas herramientas :D" }
 ];
 let memberIndex = 0;
-
 let typingTimeoutId = null;
 
 // --- ELEMENTOS DEL DOM ---
