@@ -79,8 +79,10 @@ async function translateToSpanish(textToTranslate) {
 async function fetchQuote() {
     quoteElement.textContent = 'Cargando y traduciendo frase...';
     try {
-        const originalApiUrl = 'https://zenquotes.io/api/random'; // Usamos el endpoint de una sola frase para eficiencia.
-        const proxyUrl = 'https://corsproxy.io/?' + encodeURIComponent(originalApiUrl);
+        const originalApiUrl = 'https://zenquotes.io/api/random';
+
+        // --- ESTE ES EL ÚNICO CAMBIO ---
+        const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(originalApiUrl)}`;
         
         const response = await fetch(proxyUrl);
         const data = await response.json();
@@ -88,8 +90,7 @@ async function fetchQuote() {
         if (data && data.length > 0) {
             const englishQuote = data[0].q;
             const author = data[0].a;
-
-            // ¡Aquí ocurre la magia! Traducimos la frase obtenida.
+            
             const spanishQuote = await translateToSpanish(englishQuote);
 
             quoteElement.textContent = `"${spanishQuote}" — ${author}`;
